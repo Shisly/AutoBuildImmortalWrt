@@ -1,4 +1,5 @@
 #!/bin/bash
+sed -i 's#https://downloads.immortalwrt.org#https://mirrors.pku.edu.cn/immortalwrt#g' repositories.conf
 source shell/custom-packages.sh
 echo "第三方软件包: $CUSTOM_PACKAGES"
 # yml 传入的路由器型号 PROFILE
@@ -35,6 +36,8 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') - Starting build process..."
 
 # 定义所需安装的包列表 下列插件你都可以自行删减
 PACKAGES=""
+PACKAGES="$PACKAGES iptables-nft"
+PACKAGES="$PACKAGES ip6tables-nft"
 PACKAGES="$PACKAGES curl"
 PACKAGES="$PACKAGES luci-i18n-firewall-zh-cn"
 # 服务——FileBrowser 用户名admin 密码admin

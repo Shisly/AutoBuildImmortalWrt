@@ -1,4 +1,5 @@
 #!/bin/bash
+sed -i 's#https://downloads.immortalwrt.org#https://mirrors.pku.edu.cn/immortalwrt#g' repositories.conf
 source shell/custom-packages.sh
 # 该文件实际为imagebuilder容器内的build.sh
 
@@ -52,6 +53,8 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') - Starting build process..."
 
 # 定义所需安装的包列表 下列插件你都可以自行删减
 PACKAGES=""
+PACKAGES="$PACKAGES iptables-nft"
+PACKAGES="$PACKAGES ip6tables-nft"
 PACKAGES="$PACKAGES curl"
 PACKAGES="$PACKAGES luci-i18n-firewall-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-filebrowser-zh-cn"

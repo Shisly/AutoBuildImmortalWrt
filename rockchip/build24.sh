@@ -1,4 +1,5 @@
 #!/bin/bash
+sed -i 's#https://downloads.immortalwrt.org#https://mirrors.pku.edu.cn/immortalwrt#g' repositories.conf
 # Log file for debugging
 source shell/custom-packages.sh
 echo "第三方软件包: $CUSTOM_PACKAGES"
@@ -51,6 +52,8 @@ echo "查看repositories.conf信息——————"
 cat repositories.conf
 # 定义所需安装的包列表 下列插件你都可以自行删减
 PACKAGES=""
+PACKAGES="$PACKAGES iptables-nft"
+PACKAGES="$PACKAGES ip6tables-nft"
 PACKAGES="$PACKAGES curl"
 PACKAGES="$PACKAGES openssh-sftp-server"
 PACKAGES="$PACKAGES luci-i18n-diskman-zh-cn"

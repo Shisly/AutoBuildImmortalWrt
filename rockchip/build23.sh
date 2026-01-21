@@ -1,4 +1,5 @@
 #!/bin/bash
+sed -i 's#https://downloads.immortalwrt.org#https://mirrors.pku.edu.cn/immortalwrt#g' repositories.conf
 # Log file for debugging
 source shell/custom-packages.sh
 echo "第三方软件包: $CUSTOM_PACKAGES"
@@ -50,6 +51,8 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') - Starting build process..."
 
 # 定义所需安装的包列表 23.05.4 下列插件你都可以自行删减
 PACKAGES=""
+PACKAGES="$PACKAGES iptables-nft"
+PACKAGES="$PACKAGES ip6tables-nft"
 PACKAGES="$PACKAGES curl"
 PACKAGES="$PACKAGES luci-i18n-diskman-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-opkg-zh-cn"

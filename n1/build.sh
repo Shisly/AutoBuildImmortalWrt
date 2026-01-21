@@ -1,4 +1,5 @@
 #!/bin/bash
+sed -i 's#https://downloads.immortalwrt.org#https://mirrors.pku.edu.cn/immortalwrt#g' repositories.conf
 # Log file for debugging
 source shell/custom-packages.sh
 echo "第三方软件包: $CUSTOM_PACKAGES"
@@ -12,6 +13,8 @@ echo "Building for ROOTFS_PARTSIZE: $ROOTFS_PARTSIZE"
 echo "$(date '+%Y-%m-%d %H:%M:%S') - 开始构建arm64的rootfs.tar.gz"
 # 定义所需安装的包列表 下列插件你都可以自行删减
 PACKAGES=""
+PACKAGES="$PACKAGES iptables-nft"
+PACKAGES="$PACKAGES ip6tables-nft"
 PACKAGES="$PACKAGES curl fdisk"
 PACKAGES="$PACKAGES luci-i18n-diskman-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-package-manager-zh-cn"
